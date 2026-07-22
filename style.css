@@ -33,6 +33,11 @@ label {
     font-size: 0.9em;
     color: var(--primary-color);
 }
+input[type="date"], 
+input[type="time"] {
+    -webkit-appearance: none;
+    appearance: none; 
+}
 input, select, button {
     padding: 12px;
     font-size: 16px;
@@ -44,11 +49,6 @@ input, select, button {
     box-sizing: border-box;
     margin: 0; /* Remove as margens padrão problemáticas dos navegadores móveis */
     background-color:white;
-}
-input[type="date"], 
-input[type="time"] {
-    -webkit-appearance: none;
-    appearance: none; 
 }
 button {
     background-color: var(--button-color);
