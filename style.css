@@ -38,7 +38,9 @@ input, select, button {
     border: 1px solid #ccc;
     border-radius: 6px;
     width: 100%;
+    max-width: 100%; /* Trava o tamanho máximo ao limite da caixa */
     box-sizing: border-box;
+    margin: 0; /* Remove as margens padrão problemáticas dos navegadores móveis */
 }
 button {
     background-color: var(--button-color);
