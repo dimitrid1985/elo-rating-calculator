@@ -41,6 +41,7 @@ input, select, button {
     max-width: 100%; /* Trava o tamanho máximo ao limite da caixa */
     box-sizing: border-box;
     margin: 0; /* Remove as margens padrão problemáticas dos navegadores móveis */
+    background-color:white;
 }
 button {
     background-color: var(--button-color);
