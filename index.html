@@ -3,129 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Partida - Xadrez</title>
+    <title>Ranking de Xadrez - Registro</title>
+    <!-- Importa o CSS externo -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h2>Registrar Nova Partida</h2>
+    <h2>Registro de Partida</h2>
+    
+    <div class="card">
+        <form id="formPartida">
+            <label for="data_partida">Data:</label>
+            <input type="date" id="data_partida" required>
 
-    <form id="form-partida">
-        <!-- Data e Hora -->
-        <div>
-            <label for="data_partida">Data da Partida:</label>
-            <input type="date" id="data_partida" name="data_partida" required>
-        </div>
-        <br>
-        <div>
-            <label for="hora_partida">Hora da Partida:</label>
-            <input type="time" id="hora_partida" name="hora_partida" required>
-        </div>
-        <br>
+            <label for="hora_partida">Hora:</label>
+            <input type="time" id="hora_partida" required>
 
-        <!-- Seleção de Jogadores -->
-        <div>
-            <label for="jogador_brancas">Brancas:</label>
-            <select id="jogador_brancas" name="jogador_brancas" required>
-                <option value="">Selecione o jogador</option>
+            <label for="jogador_brancas_id">Jogador de Brancas:</label>
+            <select id="jogador_brancas_id" required>
+                <option value="">Carregando jogadores...</option>
             </select>
-        </div>
-        <br>
-        <div>
-            <label for="jogador_pretas">Pretas:</label>
-            <select id="jogador_pretas" name="jogador_pretas" required>
-                <option value="">Selecione o jogador</option>
-            </select>
-        </div>
-        <br>
 
-        <!-- Resultado -->
-        <div>
+            <label for="jogador_pretas_id">Jogador de Pretas:</label>
+            <select id="jogador_pretas_id" required>
+                <option value="">Carregando jogadores...</option>
+            </select>
+
             <label for="resultado">Resultado:</label>
-            <select id="resultado" name="resultado" required>
-                <option value="">Selecione o resultado</option>
-                <option value="brancas_vencem">Brancas vencem</option>
-                <option value="pretas_vencem">Pretas vencem</option>
+            <select id="resultado" required>
+                <option value="">Selecione...</option>
+                <option value="brancas_vencem">Brancas Venceram</option>
+                <option value="pretas_vencem">Pretas Venceram</option>
                 <option value="empate">Empate</option>
             </select>
-        </div>
-        <br>
 
-        <!-- Botão de Envio -->
-        <button type="submit">Registrar Partida</button>
-    </form>
+            <button type="submit">Registrar Partida</button>
+        </form>
 
-    <script>
-        // Simulando os dados que viriam do seu banco de dados PostgreSQL
-        const jogadores = [
-            { id: 1, nome: 'Breno' }, { id: 2, nome: 'Henry' },
-            { id: 3, nome: 'Thiago' }, { id: 4, nome: 'Matheus' },
-            { id: 5, nome: 'Chrystian' }, { id: 6, nome: 'Marcelly' },
-            { id: 7, nome: 'Lorena' }, { id: 8, nome: 'Ana Beatriz' },
-            { id: 9, nome: 'Arthur' }, { id: 10, nome: 'Arley' }
-        ];
+        <div id="mensagem"></div>
+    </div>
 
-        const selectBrancas = document.getElementById('jogador_brancas');
-        const selectPretas = document.getElementById('jogador_pretas');
-
-        // Função para preencher a data e hora atuais
-        function setarDataHoraAtual() {
-            const agora = new Date();
-            
-            // Formatando a data para YYYY-MM-DD (formato esperado pelo input type="date")
-            const dataFormatada = agora.toISOString().split('T')[0];
-            document.getElementById('data_partida').value = dataFormatada;
-
-            // Formatando a hora para HH:MM (formato esperado pelo input type="time")
-            const horaFormatada = agora.toTimeString().substring(0, 5);
-            document.getElementById('hora_partida').value = horaFormatada;
-        }
-
-        // Função para popular as listas suspensas (selects)
-        function carregarJogadores() {
-            // Limpar as opções (mantendo apenas a opção padrão)
-            selectBrancas.innerHTML = '<option value="">Selecione o jogador</option>';
-            selectPretas.innerHTML = '<option value="">Selecione o jogador</option>';
-
-            const brancasSelecionado = selectBrancas.dataset.selecionado || "";
-            const pretasSelecionado = selectPretas.dataset.selecionado || "";
-
-            jogadores.forEach(jogador => {
-                // Lógica de exclusão mútua
-                if (jogador.id.toString() !== pretasSelecionado) {
-                    const optionBrancas = new Option(jogador.nome, jogador.id);
-                    if (jogador.id.toString() === brancasSelecionado) optionBrancas.selected = true;
-                    selectBrancas.add(optionBrancas);
-                }
-
-                if (jogador.id.toString() !== brancasSelecionado) {
-                    const optionPretas = new Option(jogador.nome, jogador.id);
-                    if (jogador.id.toString() === pretasSelecionado) optionPretas.selected = true;
-                    selectPretas.add(optionPretas);
-                }
-            });
-        }
-
-        // Event Listeners para atualizar as listas quando um jogador é selecionado
-        selectBrancas.addEventListener('change', function() {
-            selectBrancas.dataset.selecionado = this.value;
-            carregarJogadores(); // Recarrega a lista para remover o jogador das pretas
-        });
-
-        selectPretas.addEventListener('change', function() {
-            selectPretas.dataset.selecionado = this.value;
-            carregarJogadores(); // Recarrega a lista para remover o jogador das brancas
-        });
-
-        // Event Listener para prevenir o comportamento padrão de envio do form (recarregar página) por enquanto
-        document.getElementById('form-partida').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert("Formulário pronto para envio ao backend!");
-        });
-
-        // Inicializar a página
-        setarDataHoraAtual();
-        carregarJogadores();
-    </script>
-
+    <!-- Importa o JavaScript externo -->
+    <script src="script.js"></script>
 </body>
 </html>
