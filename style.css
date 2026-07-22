@@ -40,7 +40,7 @@ input, select, button {
     border-radius: 6px;
     width: 100%;
     max-width: 100%; /* Trava o tamanho máximo ao limite da caixa */
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     margin: 0; /* Remove as margens padrão problemáticas dos navegadores móveis */
     background-color:white;
 }
