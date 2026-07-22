@@ -69,7 +69,7 @@ document.getElementById('formPartida').addEventListener('submit', async function
         const jsonRetorno = await resposta.json();
 
         if (resposta.ok) {
-            mostrarMensagem(`Partida registrada! Variação: ${jsonRetorno.variacao_pontos} pontos.`, 'sucesso');
+            mostrarMensagem(`Partida registrada! Os novos ratings são ${jsonRetorno.jogadores.brancas.novo_rating} para as brancas e ${jsonRetorno.jogadores.pretas.novo_rating} para as pretas.`, 'sucesso');
             document.getElementById('formPartida').reset();
         } else {
             mostrarMensagem(`Erro: ${jsonRetorno.detail}`, 'erro');
