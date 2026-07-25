@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking de Xadrez - Registro</title>
+    <!-- Importa o CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>Registro de Partida</h2>
+    
+    <div class="card">
+        <form id="formPartida">
+            <label for="data_partida">Data:</label>
+            <input type="date" id="data_partida" required>
+
+            <label for="hora_partida">Hora:</label>
+            <input type="time" id="hora_partida" required>
+
+            <label for="jogador_brancas_id">Jogador de Brancas:</label>
+            <select id="jogador_brancas_id" required>
+                <option value="">Carregando jogadores...</option>
+            </select>
+
+            <label for="jogador_pretas_id">Jogador de Pretas:</label>
+            <select id="jogador_pretas_id" required>
+                <option value="">Carregando jogadores...</option>
+            </select>
+
+            <label for="resultado">Resultado:</label>
+            <select id="resultado" required>
+                <option value="">Selecione...</option>
+                <option value="brancas_vencem">Brancas Venceram</option>
+                <option value="pretas_vencem">Pretas Venceram</option>
+                <option value="empate">Empate</option>
+            </select>
+
+            <button type="submit">Registrar Partida</button>
+            <a href="ranking.html" style="text-decoration: none;">
+                <button type="button" style="background-color: var(--primary-color);">Ver Classificação Geral</button>
+            </a>
+        </form>
+
+        <div id="mensagem"></div>
+    </div>
+
+    <!-- Importa o JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
