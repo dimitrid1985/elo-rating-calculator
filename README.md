@@ -18,6 +18,7 @@ O back-end encontra-se [neste repositório](https://github.com/dimitrid1985/elo-
 
 * Retirar as estilizações in-line e colocar tudo no CSS separado.
 * O formulário de registro de partidas pode ser facilmente acessado pelo inspetor web do navegador.
+* Blindar a API para exigir tokenJWT.
 
 ## Tecnologias ##
 
