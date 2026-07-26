@@ -14,6 +14,11 @@ O back-end encontra-se [neste repositório](https://github.com/dimitrid1985/elo-
 | Controle de acesso                 | Pendente     |
 | Histórico de partidas              | Pendente     |
 
+## Outros ajustes pendentes ##
+
+* Retirar as estilizações in-line e colocar tudo no CSS separado.
+* O formulário de registro de partidas pode ser facilmente acessado pelo inspetor web do navegador.
+
 ## Tecnologias ##
 
 * Front-end: HTML5, CSS3 (Mobile-first, sem frameworks), JavaScript (Fetch API).
