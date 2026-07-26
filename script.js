@@ -88,3 +88,47 @@ function mostrarMensagem(texto, classe) {
     div.className = classe;
     div.style.display = 'block';
 }
+
+// ===== Implementação do login pelo Google ===== //
+const GOOGLE_CLIENT_ID = "852908104167-qv9eig90r0jtlu4cotkr736rs2ijbsa5.apps.googleusercontent.com"; 
+const EMAIL_ADMIN = "dimitri.duque@yahoo.com.br"; // O único e-mail permitido
+
+let tokenJWT = ""; // Guardaremos o token para enviar ao back-end
+
+// Configura e renderiza o botão do Google
+window.onload = function () {
+    google.accounts.id.initialize({
+        client_id: GOOGLE_CLIENT_ID,
+        callback: tratarRespostaGoogle
+    });
+    
+    google.accounts.id.renderButton(
+        document.getElementById("botaoGoogleLogin"),
+        { theme: "outline", size: "large" } 
+    );
+};
+
+// Função executada após o usuário fazer login no Google
+function tratarRespostaGoogle(resposta) {
+    // A resposta contém um token JWT codificado com os dados do usuário
+    tokenJWT = resposta.credential;
+    
+    // Decodifica o payload do JWT para pegar o e-mail (método simples no front)
+    const base64Url = tokenJWT.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    const dadosUsuario = JSON.parse(jsonPayload);
+
+    // Verifica se o e-mail é o seu
+    if (dadosUsuario.email === EMAIL_ADMIN) {
+        document.getElementById('areaLogin').style.display = 'none';
+        document.getElementById('formPartida').style.display = 'block';
+        mostrarMensagem(`Bem-vindo, Admin!`, 'sucesso');
+    } else {
+        mostrarMensagem(`Acesso negado: ${dadosUsuario.email} não tem permissão.`, 'erro');
+    }
+}
+// ===== FIM da implementação do login pelo Google ===== //

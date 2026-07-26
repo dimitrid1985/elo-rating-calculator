@@ -6,13 +6,24 @@
     <title>Ranking de Xadrez - Registro</title>
     <!-- Importa o CSS externo -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Script oficial do Google Identity -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
     <h2>Registro de Partida</h2>
     
     <div class="card">
-        <form id="formPartida">
+
+        <!-- Área de Login -->
+        <div id="areaLogin">
+            <p style="text-align: center; margin-bottom: 20px;">Acesso restrito ao administrador.</p>
+            <!-- O botão do Google será renderizado aqui dentro -->
+            <div id="botaoGoogleLogin" style="display: flex; justify-content: center;"></div>
+        </div>
+
+        <form id="formPartida" style="display: none;">
             <label for="data_partida">Data:</label>
             <input type="date" id="data_partida" required>
 
@@ -38,12 +49,15 @@
             </select>
 
             <button type="submit">Registrar Partida</button>
-            <a href="index.html" style="text-decoration: none;">
-                <button type="button" style="background-color: var(--primary-color);">Ver Classificação Geral</button>
-            </a>
+            
         </form>
 
         <div id="mensagem"></div>
+
+        <a href="index.html" style="text-decoration: none;">
+            <button type="button" style="background-color: var(--primary-color);">Ver Classificação Geral</button>
+        </a>
+        
     </div>
 
     <!-- Importa o JavaScript externo -->
