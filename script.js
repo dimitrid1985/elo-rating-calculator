@@ -125,7 +125,7 @@ function tratarRespostaGoogle(resposta) {
     // Verifica se o e-mail é o seu
     if (dadosUsuario.email === EMAIL_ADMIN) {
         document.getElementById('areaLogin').style.display = 'none';
-        document.getElementById('formPartida').style.display = 'block';
+        document.getElementById('formPartida').style.display = 'flex';
         mostrarMensagem(`Bem-vindo, Admin!`, 'sucesso');
     } else {
         mostrarMensagem(`Acesso negado: ${dadosUsuario.email} não tem permissão.`, 'erro');
