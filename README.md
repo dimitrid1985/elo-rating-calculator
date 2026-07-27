@@ -6,18 +6,19 @@ O back-end encontra-se [neste repositório](https://github.com/dimitrid1985/elo-
 
 ## Features ##
 
-| Recurso                            | Status       |
-| :--------------------------------- | :------------|
-| Registro de partidas               | Implementado |
-| Ranking de jogadores               | Implementado |
-| Gráfico de desempenho individual   | Pendente     |
-| Controle de acesso                 | Pendente     |
-| Histórico de partidas              | Pendente     |
+| Recurso                                                | Status       |
+| :----------------------------------------------------- | :------------|
+| Registro de partidas                                   | Implementado |
+| Ranking de jogadores                                   | Implementado |
+| Gráfico de desempenho individual                       | Pendente     |
+| Controle de acesso                                     | Implementado |
+| Histórico de partidas                                  | Implementado |
+| Possibilidade de incluir novos jogadores               | Pendente     |
 
 ## Outros ajustes pendentes ##
 
 * Retirar as estilizações in-line e colocar tudo no CSS separado.
-* O formulário de registro de partidas pode ser facilmente acessado pelo inspetor web do navegador.
+* O formulário de registro de partidas pode ser facilmente acessado pelo inspetor web do navegador. Corrigir isso.
 * Blindar a API para exigir tokenJWT.
 
 ## Tecnologias ##
