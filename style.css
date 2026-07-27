@@ -71,3 +71,32 @@ button:hover {
 }
 .sucesso { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
 .erro { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+/* -------------------------------------- */
+/* ESTILOS DA TABELA DE RANKING           */
+/* -------------------------------------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: var(--primary-color);
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Destaque para o Pódio (Ouro, Prata e Bronze) */
+.posicao-1 { font-weight: bold; color: #d4af37; font-size: 1.1em; }
+.posicao-2 { font-weight: bold; color: #a9a9a9; font-size: 1.05em; }
+.posicao-3 { font-weight: bold; color: #cd7f32; font-size: 1.05em; }
