@@ -17,6 +17,8 @@ async function carregarRanking() {
         jogadores.forEach((jogador, index) => {
             const posicao = index + 1;
             const tr = document.createElement('tr');
+            const nomeSeguroUrl = encodeURIComponent(jogador.nome);
+            const linkHistorico = `<a href="historico.html?jogador=${nomeSeguroUrl}" style="color: #0056b3; text-decoration: none; font-weight: bold;">${jogador.nome}</a>`;
             
             // Define a classe CSS caso o jogador esteja no pódio
             let classePosicao = '';
@@ -26,7 +28,7 @@ async function carregarRanking() {
 
             tr.innerHTML = `
                 <td class="${classePosicao}">${posicao}º</td>
-                <td>${jogador.nome}</td>
+                <td>${linkHistorico}</td>
                 <td><strong>${jogador.rating}</strong></td>
             `;
             tbody.appendChild(tr);
