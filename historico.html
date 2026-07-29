@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico de Partidas - Xadrez</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
     <!-- Substitua pelo caminho do seu arquivo CSS, se houver -->
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; }
@@ -45,6 +49,11 @@
             </tr>
         </tbody>
     </table>
+
+    <div id="containerGrafico" style="display: none; margin-top: 40px; width: 100%; max-width: 800px;">
+        <h3 style="text-align: center;">Evolução de Rating: <span id="nomeJogadorGrafico"></span></h3>
+        <canvas id="graficoEvolucao"></canvas>
+    </div>
 
     <script src="script.js"></script>
     <script>

@@ -1,5 +1,9 @@
-// URL base da sua API
-const API_URL = "https://elo-rating-calculator-api.onrender.com";
+// === CONSTANTES E VARIÁVEIS GLOBAIS === //
+
+let chartInstancia = null; // Variável global para destruir o gráfico anterior se necessário
+const API_URL = "https://elo-rating-calculator-api.onrender.com"; // URL base da API
+
+// === FIM DE CONSTANTES E VARIÁVEIS GLOBAIS === //
 
 // Dispara a função de buscar jogadores assim que a página carrega
 document.addEventListener('DOMContentLoaded', carregarJogadores);
@@ -183,7 +187,6 @@ async function carregarHistorico() {
         }
 
         // Itera sobre a lista de partidas e cria as linhas dinamicamente
-        // Itera sobre a lista de partidas e cria as linhas dinamicamente
         partidas.forEach(partida => {
             // 1. Tratamento da Data e Hora (continua igual)
             let dataFormatada = partida.data_partida;
@@ -239,11 +242,12 @@ async function carregarHistorico() {
             campoFiltro.value = jogadorNaUrl; 
             // Aciona a função de filtro para esconder as outras linhas
             filtrarPorJogador(); 
+            carregarGrafico(jogadorNaUrl);
         }
 
     } catch (erro) {
         console.error("Erro ao buscar histórico:", erro);
-        tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: red;">Erro ao carregar o histórico de partidas.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: red;">Erro ao carregar o histórico de partidas.</td></tr>';
     }
 }
 
@@ -270,4 +274,128 @@ function filtrarPorJogador() {
             linha.style.display = 'none'; // Esconde a linha
         }
     });
+}
+
+// implementação do gráfico de evolução do rating
+async function carregarGrafico(nomeJogador) {
+    const container = document.getElementById('containerGrafico');
+    const spanNome = document.getElementById('nomeJogadorGrafico');
+    const ctx = document.getElementById('graficoEvolucao').getContext('2d');
+
+    try {
+        const resposta = await fetch(`${API_URL}/jogador/${encodeURIComponent(nomeJogador)}/evolucao`);
+        if (!resposta.ok) throw new Error("Erro ao buscar dados do gráfico");
+        
+        const dados = await resposta.json();
+        const jogador = dados.jogador;
+        const partidas = dados.partidas;
+
+        container.style.display = 'block';
+        spanNome.textContent = jogador.nome;
+
+        // --- CONSTRUÇÃO DOS PONTOS PARA EIXO TEMPORAL (X e Y) ---
+        const dadosGrafico = [];
+
+        // Ponto 1: Criação da conta (Assumindo meia-noite para o início)
+        dadosGrafico.push({
+            x: jogador.data_criacao + 'T00:00:00', 
+            y: jogador.rating_inicial,
+            notaCustomizada: 'Início' // Campo extra para usarmos no tooltip
+        });
+
+        // Pontos 2..N: Partidas jogadas
+        let ultimoRating = jogador.rating_inicial;
+        
+        partidas.forEach(partida => {
+            // Junta data e hora (ex: 2026-07-15T14:30:00) para precisão máxima no gráfico
+            let dataHoraIso = partida.data_partida;
+            if (partida.hora_partida) {
+                dataHoraIso += 'T' + partida.hora_partida;
+            } else {
+                dataHoraIso += 'T12:00:00'; // Fallback pro meio do dia se não houver hora
+            }
+            
+            if (partida.jogador_brancas_id === jogador.id) {
+                ultimoRating = partida.rating_brancas_depois;
+            } else {
+                ultimoRating = partida.rating_pretas_depois;
+            }
+            
+            dadosGrafico.push({ x: dataHoraIso, y: ultimoRating });
+        });
+
+        // Ponto Final: Exatamente o momento atual
+        const hojeIso = new Date().toISOString();
+        dadosGrafico.push({ 
+            x: hojeIso, 
+            y: jogador.rating,
+            notaCustomizada: 'Hoje'
+        }); 
+
+        // --- RENDERIZAÇÃO DO CHART.JS ---
+        if (chartInstancia) {
+            chartInstancia.destroy(); 
+        }
+
+        chartInstancia = new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Rating',
+                    data: dadosGrafico, // Usando a nova estrutura
+                    borderColor: '#0056b3',
+                    backgroundColor: 'rgba(0, 86, 179, 0.1)',
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#0056b3',
+                    fill: true,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        type: 'time', // 👈 ISSO ATIVA A ESCALA TEMPORAL PROPORCIONAL
+                        time: {
+                            unit: 'day', // Baseia o espaçamento visual em dias
+                            tooltipFormat: 'dd/MM/yyyy HH:mm', // Formato no hover
+                            displayFormats: {
+                                day: 'dd/MM/yyyy' // Formato no eixo inferior
+                            }
+                        },
+                        title: { display: true, text: 'Data' }
+                    },
+                    y: {
+                        beginAtZero: false,
+                        title: { display: true, text: 'Pontuação Elo' }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            // Adiciona as tags "(Início)" e "(Hoje)" no balãozinho quando passar o mouse
+                            label: function(context) {
+                                let label = `Rating: ${context.parsed.y}`;
+                                if (context.raw.notaCustomizada) {
+                                    label += ` (${context.raw.notaCustomizada})`;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+    } catch (erro) {
+        console.error("Erro ao gerar gráfico:", erro);
+    }
+}
+
+// Função auxiliar para formatar YYYY-MM-DD para DD/MM/YYYY
+function formatarDataBR(dataIso) {
+    if (!dataIso) return "";
+    const partes = dataIso.split('-');
+    return `${partes[2]}/${partes[1]}/${partes[0]}`;
 }
