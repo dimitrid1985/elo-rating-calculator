@@ -3,38 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranking de Xadrez - Classificação</title>
+    <title>Chess ELO Calculator</title>
+    <!-- Importando fontes para o design -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Link para o CSS externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h2>Classificação Geral</h2>
+    <div class="page-wrapper">
+        <!-- Top Advertisement -->
+        <div class="ad-banner ad-top">
+            ADVERTISEMENT · 936 (max) x 100
+        </div>
+
+        <div class="content-wrapper">
+            <main class="main-content">
+                <!-- Header Section -->
+                <header class="page-header">
+                    <p class="subtitle"><span class="chess-piece">♔</span> CHESS TOOLS</p>
+                    <h1 class="title">Chess ELO Calculator</h1>
+                    <p class="description">Calculate your ELO rating after a match.</p>
+                </header>
+
+                <!-- Calculator Form Card -->
+                
+                <form class="card calculator-card">
+                    <div class="form-row ratings-row">
+                        <div class="form-group">
+                            <label for="white-rating"><span class="chess-piece">♔</span> WHITE RATING</label>
+                            <input type="number" id="white-rating" value="400">
+                        </div>
+                        <div class="form-group">
+                            <label for="black-rating"><span class="chess-piece">♚</span> BLACK RATING</label>
+                            <input type="number" id="black-rating" value="400">
+                        </div>
+                    </div>
+
+                    <div class="form-group k-factor-group">
+                        <label for="k-factor">K-FACTOR</label>
+                        <input type="number" id="k-factor" value="20" class="input-small">
+                        <p class="helper-text">FIDE Standard: 40 (new players) · 20 (established players) · 10 (masters)</p>
+                    </div>
+
+                    <div class="form-group match-result-group">
+                        <label>MATCH RESULT</label>
+                        <div class="result-labels">
+                            <span>WHITE</span>
+                            <span class="active">DRAW</span>
+                            <span>BLACK</span>
+                        </div>
+                        <!-- Range slider simulando os 3 estados (-1, 0, 1) -->
+                        <input type="range" min="-1" max="1" value="0" class="result-slider" id="match-result">
+                    </div>
+
+                    <button type="submit" class="btn-calculate">CALCULATE RATING</button>
+                </form>
+                
+
+                <!-- Results Card -->
+                <section class="card results-card hidden">
+                    <h2 class="card-title">RESULTS</h2>
+                    
+                    <div class="result-row white-result">
+                        <span class="player-name"><span class="chess-piece">♔</span> White</span>
+                        <span class="score-calc"></span>
+                    </div>
+
+                    <div class="result-row black-result">
+                        <span class="player-name"><span class="chess-piece">♚</span> Black</span>
+                        <span class="score-calc"></span>
+                    </div>
+
+                    <div class="results-footer">
+                        
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="ad-banner ad-side">
+                    AD · 160 × 570
+                </div>
+            </aside>
+        </div>
+
+        <!-- Bottom Advertisement -->
+        <div class="ad-banner ad-bottom desktop-hide">
+            ADVERTISEMENT · 735 (max) × 100
+        </div>
     
-    <div class="card">
-        <table id="tabelaRanking">
-            <thead>
-                <tr>
-                    <th>Posição</th>
-                    <th>Nome</th>
-                    <th>Rating</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td colspan="3" style="text-align: center;">Carregando ranking...</td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- Bottom Advertisement (Desktop) -->
+        <div class="ad-banner ad-bottom mobile-hide">
+            ADVERTISEMENT · 936 (max) x 100
+        </div>
 
-        <!-- Botão para a área de administração -->
-        <a href="registro.html" style="text-decoration: none;">
-            <button type="button" style="margin-top: 20px; background-color: var(--primary-color);">Registrar Partidas</button>
-        </a>
-        <a href="historico.html" style="text-decoration: none;">
-            <button type="button" style="margin-top: 20px; background-color: var(--primary-color);">Histórico de partidas</button>
-        </a>
+        <div class="footer-text">
+            Chess ELO Calculator · Copyright © 2026 Dimitri Duque. All rights reserved.
+        </div>
     </div>
+    <script src="elo.js"></script>
+    <script src="script.js"></script>
 
-    <script src="ranking.js"></script>
 </body>
 </html>
