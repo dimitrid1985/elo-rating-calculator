@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Bloqueia bots de varredura agressiva ou não relevantes
+User-agent: AhrefsBot
+Disallow: /
+User-agent: SemrushBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: DotBot
+Disallow: /
+User-agent: PetalBot
+Disallow: /
+
+Sitemap: https://chesselocalculator.com/sitemap.xml
