@@ -3,7 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess ELO Calculator</title>
+    <!-- SEO Meta Tags -->
+    <title>Chess Elo Calculator: Quickly Calculate Ratings & Expected Scores</title>
+    <meta name="description" content="Calculate your chess Elo rating changes instantly. Simulate expected scores for White and Black using the FIDE K-factor formula. Fast, free, and mobile-friendly.">
+    <meta name="keywords" content="elo calculator, chess elo calculator, chess rating calculator, fide elo calculator, k-factor calculator, expected score chess, arpad elo formula">
+    <!-- JSON-LD Structured Data for SoftwareApplication -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Chess Elo Calculator",
+            "operatingSystem": "Web, All",
+            "applicationCategory": "WebApplication",
+            "description": "Calculate your chess Elo rating changes instantly. Simulate expected scores for White and Black using the FIDE K-factor formula.",
+            "offers": {
+                "@type": "Offer",
+                "price": "0.00",
+                "priceCurrency": "USD"
+            },
+            "author": {
+                "@type": "Person",
+                "name": "Dimitri Duque"
+            }
+        }
+    </script>
     <!-- Importando fontes para o design -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,10 +37,6 @@
 <body>
 
     <div class="page-wrapper">
-        <!-- Top Advertisement -->
-        <div class="ad-banner ad-top">
-            ADVERTISEMENT · 936 (max) x 100
-        </div>
 
         <div class="content-wrapper">
             <main class="main-content">
@@ -82,25 +101,80 @@
                     </div>
                 </section>
 
+                <section class="info" id="about-elo">
+                    <h2>Understanding the Elo Rating System: How Chess Ratings Work</h2>
+                    <p>
+                        The <strong>Elo rating system</strong> is a calculated method used to measure relative skill levels in two-player, zero-sum games such as chess. Named after its creator, the Hungarian-American physics professor and chess master <strong>Arpad Elo</strong>, the system replaced older numerical ranking methods with a statistically rigorous framework accepted by <strong>FIDE</strong> (International Chess Federation) and online chess platforms worldwide.
+                    </p>
+
+                    <h3>What is the Elo Rating System Used For?</h3>
+                    <p>
+                        At its core, an Elo rating represents a player's expected performance based on past game results. Rather than simply counting total wins, Elo evaluates performance relative to opponent strength:
+                    </p>
+                    <ul>
+                        <li><strong>Predicting Match Outcomes:</strong> Before a game begins, the system calculates each player's probability of winning (expected score).</li>
+                        <li><strong>Dynamic Skill Tracking:</strong> Ratings increase after victories and decrease after defeats, with the scale of change depending directly on the strength difference between players.</li>
+                        <li><strong>Fair Matchmaking & Tournament Pairings:</strong> Enables tournament organizers and online algorithms to pair players of comparable skill levels.</li>
+                    </ul>
+
+                    <h3>How Does the Elo Rating Calculation Work?</h3>
+                    <p>
+                        Calculating an updated Elo rating involves two primary mathematical steps: determining the <em>Expected Score</em> (<strong>E</strong>) and calculating the final <em>Rating Adjustment</em> (<strong>&Delta;R</strong>).
+                    </p>
+                    
+                    <h4>1. Expected Score Formula</h4>
+                    <p>
+                        The probability of Player A defeating Player B is calculated using a logistic distribution based on a 400-point scale:
+                    </p>
+                    <p class="formula-block">
+                        <code>E<sub>A</sub> = 1 / (1 + 10<sup>(R<sub>B</sub> - R<sub>A</sub>) / 400</sup>)</code>
+                    </p>
+                    <p>
+                        If Player A has a 400-point rating advantage over Player B, Player A's expected score is approximately <strong>0.91 (91%)</strong>, while Player B's expected score is <strong>0.09 (9%)</strong>. If both players share equal ratings, each has an expected score of <strong>0.50 (50%)</strong>.
+                    </p>
+
+                    <h4>2. Rating Change Formula</h4>
+                    <p>
+                        After the match, ratings update using the actual match score (<strong>S</strong>: 1 for a win, 0.5 for a draw, 0 for a loss):
+                    </p>
+                    <p class="formula-block">
+                        <code>New Rating = Old Rating + K &times; (Actual Score - Expected Score)</code>
+                    </p>
+
+                    <h3>What is the K-Factor in Elo Ratings?</h3>
+                    <p>
+                        The <strong>K-factor</strong> (or K-value) determines how much weight a single game carries in updating a player's rating. It acts as a scaling multiplier that controls rating volatility:
+                    </p>
+                    <ul>
+                        <li><strong>High K-Factor (K = 40):</strong> Applied to new players and for all players until their 18th birthday, as long as their rating remains under 2300. This allows ratings to adjust rapidly toward true skill level.</li>
+                        <li><strong>Standard K-Factor (K = 20):</strong> Used for most players in classical chess competitions, as long as their rating remains under 2400.</li>
+                        <li><strong>Low K-Factor (K = 10):</strong> Applied once a player reachs 2400, even if the rating eventually drops below this level, to preserve stability and prevent drastic swings from a single game.</li>
+                    </ul>
+
+                    <h3>Why Use a Chess Elo Calculator?</h3>
+                    <p>
+                        Using a dedicated <strong>chess Elo calculator</strong> allows players, coaches, and tournament directors to project post-match rating gains or losses instantly. By entering initial ratings and selecting the appropriate K-factor, you can simulate expected outcomes for single matches or multi-round tournaments without performing complex exponential math manually.
+                    </p>
+
+                    <h3>Frequently Asked Questions (FAQ)</h3>
+                    <div class="faq-item">
+                        <h4>Does a draw change your Elo rating?</h4>
+                        <p>
+                        It depends on opponent strength. Drawing against a higher-rated opponent increases your Elo, while drawing against a lower-rated opponent decreases your Elo. Drawing against an identically rated opponent leaves both ratings unchanged.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Is Elo an acronym or a proper name?</h4>
+                        <p>
+                        Elo is named after its creator, Arpad Elo. Because it is a surname, it is properly written as "Elo" rather than "E.L.O.", although capitalization as "ELO" is widespread across gaming culture and digital software UIs such as ours.
+                        </p>
+                    </div>
+            </section>
+
             </main>
-
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                <div class="ad-banner ad-side">
-                    AD · 160 × 570
-                </div>
-            </aside>
+            
         </div>
 
-        <!-- Bottom Advertisement -->
-        <div class="ad-banner ad-bottom desktop-hide">
-            ADVERTISEMENT · 735 (max) × 100
-        </div>
-    
-        <!-- Bottom Advertisement (Desktop) -->
-        <div class="ad-banner ad-bottom mobile-hide">
-            ADVERTISEMENT · 936 (max) x 100
-        </div>
 
         <div class="footer-text">
             Chess ELO Calculator · Copyright © 2026 Dimitri Duque. All rights reserved.

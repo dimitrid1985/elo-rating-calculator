@@ -49,7 +49,8 @@ body {
     display: none !important;
 }
 
-/* Anúncios Mobile */
+/*
+
 .ad-banner {
     border: 1px dashed var(--border-color);
     background-color: #121214;
@@ -66,6 +67,8 @@ body {
 
 .ad-top, .ad-bottom { height: 100px; }
 .ad-side { height: 570px; }
+
+*/
 
 /* Cabeçalho */
 .page-header {
@@ -260,6 +263,102 @@ input[type="number"]:focus {
     color: var(--text-secondary);
 }
 
+/* ==========================================================================
+   SEO & Educational Content Section Styles (Mobile-First)
+   ========================================================================== */
+
+/* 1. ESTILOS BASE (Mobile - aplicados a todas as telas por padrão) */
+#about-elo {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    padding: 1.5rem; /* Espaçamento menor no celular */
+    border-radius: 12px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+    line-height: 1.6;
+}
+
+#about-elo h2 {
+    color: var(--text-primary);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+#about-elo h3 {
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+#about-elo h4 {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#about-elo p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+#about-elo strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+#about-elo ul {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+#about-elo li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.formula-block {
+    background-color: var(--input-bg);
+    padding: 1.25rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    margin: 1.5rem 0;
+    overflow-x: auto; /* Evita estouro horizontal em celulares */
+}
+
+.formula-block code {
+    font-family: monospace;
+    color: var(--accent-color);
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.faq-item {
+    background-color: var(--input-bg);
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--accent-color);
+}
+
+.faq-item h4 {
+    margin-top: 0;
+    color: var(--text-primary);
+}
+
+.faq-item p {
+    margin-bottom: 0;
+    color: var(--text-secondary);
+}
+
 .footer-text {
     text-align: center;
     color: var(--text-secondary);
@@ -288,21 +387,21 @@ input[type="number"]:focus {
         flex: 1; /* Permite que o conteúdo principal preencha o espaço restante */
     }
 
-    /* Exibe a barra lateral com o anúncio */
+    /* Exibe a barra lateral com o anúncio 
     .sidebar {
         display: block !important;
         width: 160px;
         flex-shrink: 0;
-    }
+    } */
 
-    /* Alterna a visibilidade dos anúncios inferior/superior e rodapé */
+    /* Alterna a visibilidade dos anúncios inferior/superior e rodapé 
     .mobile-hide {
         display: flex !important;
     }
 
     .desktop-hide {
         display: none !important;
-    }
+    } */
 
     /* Ajustes visuais para melhorar o espaçamento em telas grandes */
     .title {
