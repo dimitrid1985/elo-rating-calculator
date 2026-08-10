@@ -398,6 +398,69 @@ input[type="number"]:focus {
     padding: 1rem 0;
 }
 
+/* ==========================================================================
+   Cookie Consent Banner
+   ========================================================================== */
+
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 1.25rem 1rem;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.cookie-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cookie-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-cookie {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s;
+}
+
+.btn-cookie:hover {
+    opacity: 0.9;
+}
+
+.btn-accept {
+    background-color: var(--accent-color);
+    color: #000;
+    border: none;
+}
+
+.btn-decline {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
 /* --- RESPONSIVIDADE PARA DESKTOP (Telas >= 768px) --- */
 @media (min-width: 768px) {
     /* Centraliza a aplicação e define uma largura máxima */
@@ -447,5 +510,20 @@ input[type="number"]:focus {
 
     .form-row {
         gap: 1.5rem;
+    }
+
+    .cookie-content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .cookie-content p {
+        margin-bottom: 0;
+        padding-right: 2rem;
+    }
+
+    .cookie-buttons {
+        flex-shrink: 0;
     }
 }
