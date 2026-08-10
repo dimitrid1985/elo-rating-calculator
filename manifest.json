@@ -1,0 +1,21 @@
+{
+  "name": "Chess Elo Calculator",
+  "short_name": "Elo Calc",
+  "description": "Calculate your chess Elo rating changes instantly and simulate expected scores.",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "background_color": "#0d0d0f",
+  "theme_color": "#dfb552",
+  "icons": [
+    {
+      "src": "icons/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
