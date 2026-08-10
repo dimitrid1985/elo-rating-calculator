@@ -40,6 +40,11 @@ body {
 }
 
 /* Elementos-padrão */
+
+a {
+    transition: color 0.2s;
+}
+
 .chess-piece, .unicode-symbol {
     font-size: x-large;
 }
@@ -365,6 +370,25 @@ input[type="number"]:focus {
 .faq-item p {
     margin-bottom: 0;
     color: var(--text-secondary);
+}
+
+/* Links do Footer */
+.footer-links {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
 }
 
 .footer-text {

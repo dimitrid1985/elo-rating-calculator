@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EHJDP381RY"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-EHJDP381RY');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SEO Meta Tags -->
@@ -176,7 +185,7 @@
                     <h2>About Us</h2>
                     <p>The <strong>Chess Elo Calculator</strong> is a personal project initially created to help myself calculate the Elo rating for my chess students. On a broader view, its mission is to provide chess players, arbiters, and enthusiasts with a fast, accurate, and completely free tool to calculate rating changes.</p>
                     <p>Built with a focus on usability and mobile-first design, this calculator implements the official FIDE mathematical models to help you track your expected performance and prepare for your next tournament.</p>
-                    <h3>Contact us</h3>
+                    <h3 id="contact">Contact</h3>
                     <p class="description">Do you have questions, suggestions, or found a bug? Message me at &#128232 <a href="mailto:elocalculator@dimitriduque.com">elocalculator@dimitriduque.com</a>!</p>
                 </section>
 
@@ -185,6 +194,10 @@
         </div>
 
 
+        <div class="footer-links">
+            <a href="#about-us">About Us</a> | <a href="#contact">Contact</a>
+        </div>
+        
         <div class="footer-text">
             Chess ELO Calculator · Copyright © 2026 Dimitri Duque. All rights reserved.
         </div>
