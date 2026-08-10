@@ -40,7 +40,7 @@ body {
 }
 
 /* Elementos-padrão */
-.chess-piece {
+.chess-piece, .unicode-symbol {
     font-size: x-large;
 }
 
@@ -322,6 +322,14 @@ input[type="number"]:focus {
 .info li {
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
+}
+
+.info a {
+    color: var(--accent-color);
+}
+
+.info a:hover {
+    color: var(--text-primary);
 }
 
 .formula-block {
