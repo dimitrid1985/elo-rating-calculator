@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does a draw change your Elo rating?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on opponent strength. Drawing against a higher-rated opponent increases your Elo, while drawing against a lower-rated opponent decreases your Elo. Drawing against an identically rated opponent leaves both ratings unchanged."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Elo an acronym or a proper name?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Elo is named after its creator, Arpad Elo. Because it is a surname, it is properly written as \"Elo\" rather than \"E.L.O.\", although capitalization as \"ELO\" is widespread across gaming culture and digital software UIs."
+      }
+    }
+  ]
+}
