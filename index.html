@@ -169,7 +169,36 @@
                         Elo is named after its creator, Arpad Elo. Because it is a surname, it is properly written as "Elo" rather than "E.L.O.", although capitalization as "ELO" is widespread across gaming culture and digital software UIs such as ours.
                         </p>
                     </div>
-            </section>
+                </section>
+
+                <!-- About Us Section -->
+                <section class="info" id="about-us">
+                    <h2>About Us</h2>
+                    <p>The <strong>Chess Elo Calculator</strong> is a personal project initially created to help myself calculate the Elo rating for my chess students. On a broader view, its mission is to provide chess players, arbiters, and enthusiasts with a fast, accurate, and completely free tool to calculate rating changes.</p>
+                    <p>Built with a focus on usability and mobile-first design, this calculator implements the official FIDE mathematical models to help you track your expected performance and prepare for your next tournament.</p>
+                </section>
+
+                <!-- Contact Us Section -->
+                <section class="card contact-card" id="contact">
+                    <h2 class="card-title">CONTACT US</h2>
+                    <p class="description">Do you have questions, suggestions, or found a bug? Send us a message!</p>
+                    
+                    <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+                        <div class="form-group">
+                            <label for="contact-name">NAME</label>
+                            <input type="text" id="contact-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">EMAIL</label>
+                            <input type="email" id="contact-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">MESSAGE</label>
+                            <textarea id="contact-message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-calculate">SEND MESSAGE</button>
+                    </form>
+                </section>
 
             </main>
             

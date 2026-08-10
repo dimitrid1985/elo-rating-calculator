@@ -268,7 +268,7 @@ input[type="number"]:focus {
    ========================================================================== */
 
 /* 1. ESTILOS BASE (Mobile - aplicados a todas as telas por padrão) */
-#about-elo {
+.info {
     background-color: var(--card-bg);
     color: var(--text-primary);
     padding: 1.5rem; /* Espaçamento menor no celular */
@@ -279,7 +279,7 @@ input[type="number"]:focus {
     line-height: 1.6;
 }
 
-#about-elo h2 {
+.info h2 {
     color: var(--text-primary);
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
@@ -288,38 +288,38 @@ input[type="number"]:focus {
     border-bottom: 2px solid var(--accent-color);
 }
 
-#about-elo h3 {
+.info h3 {
     color: var(--text-primary);
     font-size: 1.3rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
 
-#about-elo h4 {
+.info h4 {
     color: var(--accent-color);
     font-size: 1.1rem;
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
-#about-elo p {
+.info p {
     color: var(--text-secondary);
     margin-bottom: 1rem;
     font-size: 0.95rem;
 }
 
-#about-elo strong {
+.info strong {
     color: var(--text-primary);
     font-weight: 600;
 }
 
-#about-elo ul {
+.info ul {
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
     padding-left: 1.5rem;
 }
 
-#about-elo li {
+.info li {
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
 }
