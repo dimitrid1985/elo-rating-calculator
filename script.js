@@ -83,7 +83,15 @@ form.addEventListener('submit', function(event) {
     // 6. Atualiza o rodapé com o Fator K e quem venceu
     document.querySelector('.results-footer').textContent = `K=${kFactor} · ${resultText}`;
 
-    // 7. Revela o card de resultados
+    // 7. Dispara o evento personalizado no Google Analytics
+    if (typeof gtag === 'function') {
+        gtag('event', 'calculate_elo', {
+            'event_category': 'engagement',
+            'event_label': 'Elo Calculation'
+        });
+    }
+
+    // 8. Revela o card de resultados
     resultsCard.classList.remove('hidden');
 });
 
