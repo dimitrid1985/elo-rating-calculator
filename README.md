@@ -13,7 +13,7 @@ O back-end encontra-se [neste repositório](https://github.com/dimitrid1985/elo-
 | Gráfico de desempenho individual                       | Implementado |
 | Controle de acesso                                     | Implementado |
 | Histórico de partidas                                  | Implementado |
-| Possibilidade de incluir novos jogadores               | Pendente     |
+| Possibilidade de incluir novos jogadores               | Implementado |
 
 ## Outros ajustes pendentes ##
 
