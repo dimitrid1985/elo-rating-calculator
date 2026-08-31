@@ -93,6 +93,49 @@ function mostrarMensagem(texto, classe) {
     div.style.display = 'block';
 }
 
+// Configura o submit do form de novoJogador
+document.addEventListener('DOMContentLoaded', () => {
+    const formNovoJogador = document.getElementById('formNovoJogador');
+    
+    if (formNovoJogador) {
+        formNovoJogador.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Impede o recarregamento da página
+            
+            const nome = document.getElementById('nome_jogador').value;
+            const ratingInicial = parseInt(document.getElementById('rating_inicial').value);
+
+            try {
+                // Ajuste a API_URL se necessário
+                const resposta = await fetch(`http://localhost:8000/adicionar_jogador`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nome: nome,
+                        rating_inicial: ratingInicial
+                    })
+                });
+
+                if (!resposta.ok) {
+                    throw new Error("Erro ao cadastrar o jogador.");
+                }
+
+                mostrarMensagem(`Jogador ${nome} cadastrado com sucesso!`, 'sucesso');
+                
+                // Limpa o nome, mas mantém o rating em 200 para facilitar múltiplos cadastros
+                document.getElementById('nome_jogador').value = '';
+                document.getElementById('rating_inicial').value = 200;
+
+            } catch (erro) {
+                console.error(erro);
+                mostrarMensagem("Erro ao conectar com o servidor.", 'erro');
+            }
+        });
+    }
+});
+
+
 // ===== Implementação do login pelo Google ===== //
 const GOOGLE_CLIENT_ID = "852908104167-qv9eig90r0jtlu4cotkr736rs2ijbsa5.apps.googleusercontent.com"; 
 const EMAIL_ADMIN = "dimitri.duque@yahoo.com.br"; // O único e-mail permitido
@@ -148,11 +191,15 @@ function tratarRespostaGoogle(resposta) {
 
 function liberarFormulario(mensagem) {
     document.getElementById('areaLogin').style.display = 'none';
-    document.getElementById('formPartida').style.display = 'flex';
     
-    // EXIBE O BOTÃO DE LOGOUT AQUI 👇
+    // Verifica qual formulário existe na página atual e o exibe
+    const formPartida = document.getElementById('formPartida');
+    const formNovoJogador = document.getElementById('formNovoJogador');
+    
+    if (formPartida) formPartida.style.display = 'flex';
+    if (formNovoJogador) formNovoJogador.style.display = 'flex';
+    
     document.getElementById('botaoLogout').style.display = 'inline-block'; 
-    
     mostrarMensagem(mensagem, 'sucesso');
 }
 
