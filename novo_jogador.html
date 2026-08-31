@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área Restrita - Novo Jogador</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- Navegação sugerida -->
+    <nav style="margin-bottom: 20px; text-align: center;">
+        <a href="index.html">Ranking</a> | 
+        <a href="historico.html">Histórico</a> | 
+        <a href="registro.html">Registrar Partida</a>
+    </nav>
+
+    <h2>Cadastrar Novo Jogador</h2>
+    
+    <div class="card">
+        <!-- Área de Login -->
+        <div id="areaLogin">
+            <p style="text-align: center; margin-bottom: 20px;">Acesso restrito ao administrador.</p>
+            <div id="botaoGoogleLogin" style="display: flex; justify-content: center;"></div>
+        </div>
+
+        <!-- Formulário Oculto (Só aparece após logar) -->
+        <form id="formNovoJogador" style="display: none;">
+            <label for="nome_jogador">Nome do Jogador:</label>
+            <input type="text" id="nome_jogador" required>
+
+            <label for="rating_inicial">Rating Inicial:</label>
+            <!-- O atributo 'value' já deixa o 200 pré-preenchido -->
+            <input type="number" id="rating_inicial" value="200" required>
+
+            <button type="submit">Cadastrar Jogador</button>
+        </form>
+
+        <div id="mensagem"></div>
+
+        <button type="button" id="botaoLogout" onclick="fazerLogout()" style="display: none; margin-top: 20px; background-color: #dc3545; color: white; width: 100%;">Sair da Conta</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
