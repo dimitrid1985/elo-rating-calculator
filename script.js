@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // Ajuste a API_URL se necessário
-                const resposta = await fetch(`http://localhost:8000/adicionar_jogador`, {
+                const resposta = await fetch(`${API_URL}/adicionar_jogador`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
